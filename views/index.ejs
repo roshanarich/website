@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <title>RESEARCH NOW</title>
+      <script src="js/script.js"></script>
+      <link rel="stylesheet" href="css/webdesign.css"> 
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" style="border-style: solid;
+      border-color: #08c0ff;
+      border-width: 10px;"/>
+
+<nav class="navibar">
+  <div class="navibar_container">
+    <a href="/" id="navi_logo"> <i class="fa fa-book"></i>RESEARCH NOW</a>
+    <div class="navibar_toggle" id="menu_bar">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <ul class="navibar_menu">
+      <li class="navi_part">
+        <a href="/" class="navi_link" title="Go to the Home page">Home</a>
+      </li>
+      <li class="navi_part">
+        <a href="/search" class="navi_link" title="Explore new content including articles reports and books, ready for you to discover">Explore</a>
+      </li>
+      <li class="navi_part">
+        <a href="/shop" class="navi_link" title="Visit the Shop to purchase your found content items">Shop</a>
+      </li>
+      <li class="navi_part">
+        <button id="contact-btn" class="contact-btn" title="Contact us for further information or any questions you may have">Contact</button>
+      </li>
+      <li class="navi_button">
+        <button class="button" onclick="openForm()" title="Sign up for an account">Sign up</button>
+      </li>
+      <li class="navi_part">
+        <button id= "shopping-basket" style="font-size:24px; width: 150%;" title="My Basket"><i class="fa fa-shopping-basket"></i><span class="item-count">0</span></button>
+    </li>
+    <li class="navi_part">
+      <a href="/myprofile">
+      <button id="myp" class="myp" title="My Profile">My profile</button></a>
+    </li>
+    </ul>
+  </div>
+</nav>  
+    </head>
+
+      <body style="background-color: #B9D9EB; width:100%; height:10px !important;" >
+
+<div class="main" id="myForm">  	
+		<input type="checkbox" id="chk" >
+
+			<div class="signup">
+				<form action="POST">
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" name="txt" placeholder="User name" required="">
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button class="button1">Sign up</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form action="POST" >
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button>Login</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                </div>
+				</form>
+			
+	</div>
+
+
+  <% if (typeof message !== 'undefined' && message !== '') { %>
+    <p><%= message %></p>
+  <% } %>
+  
+  <div class="search">
+    <form action="/search" class="search_bar" method="get">
+       
+        <input type="text" placeholder="Search Here For Content" name="query" id="searchInput">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  
+ <!-- adding versions of jQuery to help with the autosuggestions-->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="path/to/jquery.min.js"></script>
+
+<script>
+  $(function() {
+    // search suggestions from the keywords array 
+    var availableTags = [
+    "CRIMINAL",
+  "LAW ",
+  "Amy",
+  "DeLine",
+  "Adair",
+  "Crosley",
+  "C.",
+  "R.",
+  "Sridhar",
+  "Urban",
+  "Crime",
+  "Hee-Jong",
+  "Joo",
+  "CONTROL",
+"Cultural",
+  "Studies",
+  "Janet",
+  "Wolff",
+  "Culture",
+"Youth",
+  "Jeff",
+  "Ferrell",
+  "Cultural Space",
+"FEMINISM",
+  "Loraine",
+  "Gelsthorpe",
+  "Allison",
+  "Morris",
+  "BRITAIN",
+"INEQUALITY",
+  "Morgan",
+  "Kelly",
+"VARIETIES",
+  "ENLIGHTENMENT",
+  "Philip",
+  "Jenkins",
+  "Social Policy",
+  "Family",
+  "Concepts",
+  "Concerns",
+  "Shirley",
+  "L.",
+  "Zimmerman",
+  "Analytic Tools",
+"STATES",
+  "POLICIES",
+  "Theda",
+  "Skocpol",
+  "Edwin",
+  "Amenta",
+  "Geoff Whitty",
+  "Education",
+  "Research",
+  "Social",
+  "Bob",
+  "Lingard",
+  "Justice",
+"Ideology",
+  "Shaped",
+  "Psychology",
+  "Time",
+  "Wars",
+  "Gordana",
+  "Jovanović",
+  "Politics",
+  "ALLEVIATION",
+  "ethnic",
+  "groups",
+  "food poverty line",
+  "Living Standards Measurement Surveys",
+  "poverty line",
+  "poverty",
+  "reduction",
+  "social development",
+  "Brian",
+  "Van",
+  "Arkadie",
+  "Raymond",
+  "Mallon",
+  "welfare",
+"Prevention",
+  "Criminology",
+  "Christine",
+  "Gervais",
+  "Governmentality",
+"Community",
+  "Policing",
+  "19th",
+  "Century",
+  "Britain",
+  "Imperial Japan",
+  "Rethinking",
+  "International",
+  "Deniz",
+  "Kocak",
+  "Reform",
+"Inequality",
+  "Emma",
+  "Aguila",
+  "Alisher",
+  "R.",
+  "Akhmedjonov",
+  "Ricardo",
+  "Basurto-Davila",
+  "Krishna",
+  "B.",
+  "Kumar",
+  "Sarah",
+  "Kups",
+  "Howard",
+  "J.",
+  "Shatz",
+  "Mexico",
+  "Gjalt",
+  "de",
+  "Graaf",
+  "Patrick",
+  "von",
+  "Maravić",
+  "Pieter",
+  "Wagenaar",
+  "Corruption",
+  "gender",
+  "equality",
+  "Meredith",
+  "Edwards",
+  "Miranda",
+  "Stewart",
+  "Legitimacy",
+  "Robert",
+  "E.",
+  "Worden",
+  "Sarah",
+  "J.",
+  "McLean",
+"History",
+  "Psychology",
+  "Schools",
+  "Adelaide",
+  "Neil",
+  "Kirby",
+  "Universities",
+"Human",
+  "psychology",
+  "intelligent",
+  "machines",
+  "Aaron",
+  "Celaya",
+  "Nick",
+  "Yeung",
+  "Arbara",
+  "Kotschwar",
+  "Policy",
+"Police",
+  "Corruption",
+  "Past",
+  "Scandals",
+  "David",
+  "Bayley",
+  "Robert",
+  "Perito",
+  "Challenges",
+  "PROBATION",
+  "TIME",
+  "Emily",
+  "Mooney",
+  "Nila",
+  "Bala",
+  "COVID-19",
+  "state-sponsored",
+  "Johannes",
+  "Wiggen",
+  "cyber",
+  "Responses",
+  "Merike",
+  "Blofield",
+  "Bert",
+  "Hoffmann",
+  "Crisis",
+"Theories",
+  "Robert Muggah",
+  "Katherine",
+  "Aguirre",
+  "Tobón",
+  "violence",
+"International",
+  "political",
+  "sociology",
+  "ontology",
+  "power",
+  "Stefano",
+  "Guzzini",
+  "politics",
+"Criminological",
+  "Perspectives",
+  "Female",
+  "Suicide",
+  "Maria",
+  "Alvanou",
+  "Terrorism",
+"Urbanisation",
+  "ruralurban",
+  "migration",
+  "urban",
+  "Cecilia",
+  "Tacoli",
+  "Gordon",
+  "McGranahan",
+  "David",
+  "Satterthwaite"
+];
+
+    // autocomplete the search suggestions 
+    $("#searchInput").autocomplete({
+      source: availableTags
+    });
+  });
+</script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+<!-- Slideshow container -->
+<div class="slideshow-container">
+   <div class="mySlides fade">
+    <div class="numbertext">1 / 5</div>
+    <img src="images/slideimg1.jpg" style="width:100%">
+    <div class="text">Creative and articistic research quailty is avaliable with diverse angles to explore with explosive language and stories.</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 5</div>
+    <img src="images/slideimg3.jpg" style="width:100%">
+    <div class="text">Statistical and calculated research is to be found ready to be applied for future reports.</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 5</div>
+    <img src="images/slideimg5.jpg" style="width:100%">
+    <div class="text">Various topics are avaliable from social justice, sociology, psychology and the like. </div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">4 / 5</div>
+    <img src="images/slideimg6.jpg" style="width:100%">
+    <div class="text">Society it's self has dynamic elements that can be explored from youth crime, criminals and the enviroment.</div>
+  </div>
+
+
+  <div class="mySlides fade">
+    <div class="numbertext">5 / 5</div>
+    <img src="images/slideimg8.jpg" style="width:100%">
+    <div class="text">COVID-19 and its impact is still changing life as we know it, but now lets dive into this.</div>
+  </div>
+
+  <!-- Next and previous buttons -->
+ 
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+   
+</div>
+<br>
+
+<!-- The dots/circles for each slide  -->
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)" id="dot1"></span>
+  <span class="dot" onclick="currentSlide(2)" id="dot2"></span>
+  <span class="dot" onclick="currentSlide(3)" id="dot3"></span>
+  <span class="dot" onclick="currentSlide(4)" id="dot4"></span>
+  <span class="dot" onclick="currentSlide(5)" id="dot5"></span>
+</div>
+
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides(n) {
+  //create loop of slide to activate and display
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+//to jump to other slides and go to the next slide
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+    //to then display  slides
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 2000); // Change imagery every 2 seconds
+}
+</script>
+
+
+<div class="extra">
+
+    <div class="people">
+        <h1 style="position: relative; top: 140px; right: 350px;"> Enhance your research with quality <br> academic sources <br></h1><br><br><br>
+          <h3 style="position: relative; top: 180px; right: 350px;"> Explore a variety documents that are high-quality sources,<br> books, journals and more!<br> Perfect for university students, teachers and collegues alike. <br> Make the switch from the traditional pen-and-paper <br>route to approch your research techniques and collection <br>process. Online research is essential and moving with the <br>new times.</h3> 
+        <img src="images/people.jpeg" class="elements">
+        <a href="/search"> <button type="button" class="discover"> Explore</button> </a>
+    </div>
+</div>
+
+
+<div id="contact-form">
+  <h1 style="font-size: 30px;">Contact Us</h1>
+  <form action="/submitform" method="POST">
+    <div class="form-group">
+      <label style="color:black; font-size: 18px;" for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label style="color:black; font-size: 18px;" for="email">Email:</label>
+      <input type="email" id="email" name="email" style="color: grey;"required>
+    </div>
+    <div class="form-group">
+      <label style="color:black; font-size: 18px;" for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone" required>
+    </div>
+    <div class="form-group">
+      <label style="color:black; font-size: 18px;" for="message">Message:</label>
+      <textarea id="message" name="message" required style="height: 100px; width: 100%;"></textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit">Send Message</button>
+      <button type="button" id="close-btn">Close</button>
+    </div>
+  </form>
+</div>
+
+  
+   
+<script>
+const contactBtn = document.getElementById("contact-btn");
+const contactForm = document.getElementById("contact-form");
+const closeBtn = document.getElementById("close-btn");
+
+contactBtn.addEventListener("click", () => {
+contactForm.style.display = "block";
+});
+
+closeBtn.addEventListener("click", () => {
+contactForm.style.display = "none";
+});
+</script>
+        
+
+<script>
+  let itemCount = 0;
+  const itemCountSpan = document.querySelector('.item-count');
+  const shoppingBasketBtn = document.querySelector('#shopping-basket');
+
+  shoppingBasketBtn.addEventListener('click', () => {
+    window.location.href = "/order";
+  });
+
+  //connect to the order page 
+  const orderForm = document.querySelector('form');
+  orderForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    window.location.href = '/order';
+  });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const storedItemCount = localStorage.getItem('itemCount');
+  if (storedItemCount !== null) {
+    itemCount = parseInt(storedItemCount);
+    itemCountSpan.innerText = itemCount;
+  }
+});
+
+function addItemToBasket(value, id, title, year, authors) {
+  itemCount += parseInt(value);
+  itemCountSpan.innerText = itemCount;
+
+  const item = {
+    id: id,
+    title: title,
+    year: year,
+    authors: authors,
+    quantity: value
+  };
+  let basket = localStorage.getItem('basket');
+  if (basket === null) {
+    basket = [item];
+  } else {
+    basket = JSON.parse(basket);
+    let itemIndex = basket.findIndex(i => i.id === id);
+    if (itemIndex === -1) {
+      basket.push(item);
+    } else {
+      basket[itemIndex].quantity = value;
+    }
+  }
+  //store value in the localstorage basket
+  localStorage.setItem('basket', JSON.stringify(basket));
+}
+const orderSelects = document.querySelectorAll('.order-select');
+orderSelects.forEach(select => {
+  select.addEventListener('change', () => {
+
+    //highlight to important rows
+    const id = select.dataset.id;
+    const value = select.value;
+    const title = select.closest('tr').querySelector('td:nth-child(2)').textContent;
+    const year = select.closest('tr').querySelector('td:nth-child(4)').textContent;
+    const authors = select.closest('tr').querySelector('td:nth-child(3)').textContent.split(', ');
+    const okBtn = document.querySelector(`#ok-${id}`);
+    okBtn.style.display = 'inline-block';
+    addItemToBasket(value, id, title, year, authors);
+  });
+});
+</script>
+
+<script>
+  function addItemToBasket(value) {
+    itemCount += parseInt(value);
+    itemCountSpan.innerText = itemCount;
+    localStorage.setItem('itemCount', itemCount);
+  }
+  
+  // when page is loaded add value from storage and update 
+  document.addEventListener('DOMContentLoaded', () => {
+    const storedItemCount = localStorage.getItem('itemCount');
+    if (storedItemCount !== null) {
+      itemCount = parseInt(storedItemCount);
+      itemCountSpan.innerText = itemCount;
+    }
+  });
+  
+  </script>
+
+<script src="basket.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    updateBasket();
+  });
+</script>
+<br>
+<br>
+
+<div class="more">
+
+<h1 style="text-align:center;">The World Is Your Research Osyster</h1>
+
+<img src="images/map9.jpeg" style="width:65%" >
+</div>
+
+<br>
+<br>
+
+<footer class="footer" style="position: relative; bottom: 0; width: 100%; margin: auto 0;">
+    <div class="container">
+        <div class="row">
+            <div class="footer_col">
+
+                <h4 style ="font-size: 23px;">Company</h4>
+                <ul>
+                    <li> <a href="/aboutus">About us</a></li>
+                    <li> <a href="/ourservices">Our Services</a></li>
+                    <li> <a href="/privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer_col">
+                <h4 style ="font-size: 23px;">Get Help</h4>
+                <ul>
+                    <li> <a href="/faq">FAQ</a></li>
+                    <li> <a href="/shipping">Shipping</a></li>
+                    <li> <a href="/returns">Returns</a></li>
+                  
+                </ul>
+            </div>
+            <div class="footer_col">
+                <h4 style ="font-size: 23px;">Online Shop</h4>
+                <ul>
+                  <li> <a href="/shoparticles">Articles </a></li>
+                  <li> <a href="/shopbooks">Books</a></li>
+                  <li> <a href="/shopreports">Reports</a></li>
+                  
+                </ul>
+            </div>
+
+            <div class="footer_col">
+                <h4 style ="font-size: 23px;">Follow Us</h4>
+                <div class="social_links">
+                <ul>
+                    <a href="https://www.facebook.com/UniversityofKent/?locale=en_GB"><i class="fa fa-facebook"></i></a>
+                    <a href="https://twitter.com/UniKent?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/unikentlive/?hl=en"><i class="fa fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/school/university-of-kent/"><i class="fa fa-linkedin"></i></a>
+                </ul>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
+    </body>
+</html>

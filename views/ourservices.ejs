@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+      <title>RESEARCH NOW</title>
+      <script src="js/script.js"></script>
+      <link rel="stylesheet" href="css/webdesign.css"> 
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    </head>
+
+    <body style="background-color: #B9D9EB;">
+      
+      <nav class="navibar">
+        <div class="navibar_container">
+          <a href="/" id="navi_logo"> <i class="fa fa-book"></i>RESEARCH NOW</a>
+          <div class="navibar_toggle" id="menu_bar">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="navibar_menu">
+            <li class="navi_part">
+              <a href="/" class="navi_link" title="Go to the Home page">Home</a>
+            </li>
+            <li class="navi_part">
+              <a href="/search" class="navi_link" title="Explore new content including articles reports and books, ready for you to discover">Explore</a>
+            </li>
+            <li class="navi_part">
+              <a href="/shop" class="navi_link" title="Visit the Shop to purchase your found content items">Shop</a>
+            </li>
+            <li class="navi_part">
+              <button id="contact-btn" class="contact-btn" title="Contact us for further information or any questions you may have">Contact</button>
+            </li>
+            <li class="navi_button">
+              <button class="button" onclick="openForm()" title="Sign up for an account">Sign up</button>
+            </li>
+            <li class="navi_part">
+              <button id= "shopping-basket" style="font-size:24px; width: 150%;" title="My Basket"><i class="fa fa-shopping-basket"></i><span class="item-count">0</span></button>
+          </li>
+          <li class="navi_part">
+            <a href="/myprofile">
+            <button id="myp" class="myp" title="My Profile">My profile</button></a>
+          </li>
+          </ul>
+        </div>
+      </nav>
+       
+<div class="main" id="myForm">  	
+		<input type="checkbox" id="chk" >
+
+			<div class="signup">
+				<form action="/action_page.php">
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" name="txt" placeholder="User name" required="">
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button class="button1">Sign up</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form action="/action_page.php" >
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button>Login</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                </div>
+				</form>
+			
+	</div>
+
+     <div id="contact-form">
+      <h1 style= "font-size: 30px;"> Contact Us</h1>
+      <form>
+        <div class="form-group">
+          <label style="color:black; font-size: 18px;" for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label style="color:black; font-size: 18px;" for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label style="color:black; font-size: 18px;" for="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+       
+        <div class="form-group">
+          <label style="color:black; font-size: 18px;" or="message">Message:</label>
+          <textarea id="message" name="message" required style="height: 100px; width: 100%;"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <button type="submit">Send Message</button>
+          <button type="button" id="close-btn">Close</button>
+        </div>
+      </form>
+    </div>
+    <script>
+      const contactBtn = document.getElementById("contact-btn");
+      const contactForm = document.getElementById("contact-form");
+      const closeBtn = document.getElementById("close-btn");
+      
+      contactBtn.addEventListener("click", () => {
+      contactForm.style.display = "block";
+      });
+      
+      closeBtn.addEventListener("click", () => {
+      contactForm.style.display = "none";
+      });
+      </script>
+
+    <style>
+      body {
+          font-family: Arial, Helvetica, sans-serif;
+          margin: 0;
+      }
+      header {
+          background-color: #333;
+          color: #fff;
+          padding: 20px;
+          text-align: center;
+      }
+      main {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          padding: 70px 20px;
+          max-width: 1200px;
+          margin: 0 auto;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          background-color: #fff;
+      }
+      .card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          max-width: 300px;
+          text-align: center;
+          padding: 20px;
+          margin: 20px;
+          border-radius: 10px;
+          background-color: #f7f7f7;
+      }
+      p {
+          font-size: 18px;
+          line-height: 1.5;
+          margin-bottom: 20px;
+      }
+      .btn {
+          display: inline-block;
+          padding: 10px 20px;
+          border-radius: 5px;
+          background-color: #87CEFA;
+          color: #fff;
+          font-size: 18px;
+          text-decoration: none;
+          margin-top: 10px;
+      }
+      .btn:hover {
+          background-color: #555;
+      }
+  </style>
+  
+      <h1 style="margin-top: 80px; text-align: center;">Our Services</h1>
+    <main>
+      <section>
+        <h2>About Us</h2>
+        <p>Research Now is here to serve your research needs. We provide our users with a great collection of research to take from such as articles, reports, and books. we have also provided an easy  search feature helps you find allthe materials that you need. Moreover we have a shop feature which allows you to purchase the items directly from us.</p>
+      </section>
+      <section>
+        <p>Our Services</p>
+        <p>At Research Now, we offer our users a vast range of services to help make your own research journey as smooth as it can be :</p>
+        <ul>
+          <li><strong>Search Functionality:</strong> Our search feature is designed to help you find the research materials you need quickly and easily. With our advanced search feature, you can filter your results to get the most relevant materials you need for your research.</li>
+          <li><strong>Shop:</strong> We offer our users the option to purchase research this includes articles, reports, and books. we have a very secure payment system that ensures that your transactions are safe and secure from any other cyber interference.</li>
+          </ul>
+      </section>
+      
+      <section>
+        <br>
+        <br>
+      <br>
+        <h3>Testimonials</h3>
+        <p>Here are some comments from one of our satisfied customers:</p>
+        <blockquote>"I love Research Now! OMG. It's so cool and easy to use it has made finding research materials a fun experience"</blockquote> <br>
+        <blockquote>"The search feature is so great. I was able to find exactly what I needed in a matter of minutes. I know ill be able to get my assignment done on time"</blockquote> <br>
+        <blockquote>"The quality of the research materials available on Research Now is excellent. I would definitely recommend to others and use this website again."</blockquote><br>
+      </section>
+    </main>
+  
+<br>
+<br>
+<br>
+<br>      
+
+<script>
+  let itemCount = 0;
+  const itemCountSpan = document.querySelector('.item-count');
+  
+  const shoppingBasketBtn = document.querySelector('#shopping-basket');
+
+  shoppingBasketBtn.addEventListener('click', () => {
+    window.location.href = "/order";
+  });
+
+  const orderSelects = document.querySelectorAll('.order-select');
+  orderSelects.forEach(select => {
+    select.addEventListener('change', () => {
+      const id = select.dataset.id;
+      const value = select.value;
+      const okBtn = document.querySelector(`#ok-${id}`);
+      okBtn.style.display = 'inline-block';
+      addItemToBasket(value);
+    });
+  });
+
+  function addItemToBasket(value) {
+    itemCount += parseInt(value);
+    itemCountSpan.innerText = itemCount;
+  }
+
+  const orderForm = document.querySelector('form');
+  orderForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    window.location.href = '/order';
+  });
+</script>
+
+<footer class="footer" style="position: relative; bottom: 0; width: 100%; margin: auto 0;">
+  <div class="container">
+      <div class="row">
+          <div class="footer_col">
+
+
+
+              <h4 style ="font-size: 23px;">Company</h4>
+              <ul>
+                  <li> <a href="/aboutus">About us</a></li>
+                  <li> <a href="/ourservices">Our Services</a></li>
+                  <li> <a href="/privacy">Privacy Policy</a></li>
+              </ul>
+          </div>
+          <div class="footer_col">
+              <h4 style ="font-size: 23px;">Get Help</h4>
+              <ul>
+                  <li> <a href="/faq">FAQ</a></li>
+                  <li> <a href="/shipping">Shipping</a></li>
+                  <li> <a href="/returns">Returns</a></li>
+                
+              </ul>
+          </div>
+          <div class="footer_col">
+              <h4 style ="font-size: 23px;">Online Shop</h4>
+              <ul>
+                <li> <a href="/shoparticles">Articles </a></li>
+                <li> <a href="/shopbooks">Books</a></li>
+                <li> <a href="/shopreports">Reports</a></li>
+                
+              </ul>
+          </div>
+
+          <div class="footer_col">
+              <h4 style ="font-size: 23px;">Follow Us</h4>
+              <div class="social_links">
+              <ul>
+                  <a href="https://www.facebook.com/UniversityofKent/?locale=en_GB"><i class="fa fa-facebook"></i></a>
+                  <a href="https://twitter.com/UniKent?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fa fa-twitter"></i></a>
+                  <a href="https://www.instagram.com/unikentlive/?hl=en"><i class="fa fa-instagram"></i></a>
+                  <a href="https://www.linkedin.com/school/university-of-kent/"><i class="fa fa-linkedin"></i></a>
+              </ul>
+          </div>
+          </div>
+
+
+  
+      </div>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+      <title>RESEARCH NOW</title>
+      <script src="js/script.js"></script>
+      <link rel="stylesheet" href="css/webdesign.css"> 
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    </head>
+
+    <body style="background-color: #B9D9EB;">
+      
+      <nav class="navibar">
+        <div class="navibar_container">
+          <a href="/" id="navi_logo"> <i class="fa fa-book"></i>RESEARCH NOW</a>
+          <div class="navibar_toggle" id="menu_bar">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="navibar_menu">
+            <li class="navi_part">
+              <a href="/" class="navi_link" title="Go to the Home page">Home</a>
+            </li>
+            <li class="navi_part">
+              <a href="/search" class="navi_link" title="Explore new content including articles reports and books, ready for you to discover">Explore</a>
+            </li>
+            <li class="navi_part">
+              <a href="/shop" class="navi_link" title="Visit the Shop to purchase your found content items">Shop</a>
+            </li>
+            <li class="navi_part">
+              <button id="contact-btn" class="contact-btn" title="Contact us for further information or any questions you may have">Contact</button>
+            </li>
+            <li class="navi_button">
+              <button class="button" onclick="openForm()" title="Sign up for an account">Sign up</button>
+            </li>
+            <li class="navi_part">
+              <button id= "shopping-basket" style="font-size:24px; width: 150%;" title="My Basket"><i class="fa fa-shopping-basket"></i><span class="item-count">0</span></button>
+          </li>
+          <li class="navi_part">
+            <a href="/myprofile">
+            <button id="myp" class="myp" title="My Profile">My profile</button></a>
+          </li>
+          </ul>
+        </div>
+      </nav>
+       
+<div class="main" id="myForm">  	
+		<input type="checkbox" id="chk" >
+
+			<div class="signup">
+				<form action="/action_page.php">
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" name="txt" placeholder="User name" required="">
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button class="button1">Sign up</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form action="/action_page.php" >
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button>Login</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                </div>
+				</form>
+			
+	</div>
+
+  <h1 style="margin-left: 150px; margin-top: 80px;">Order Details:</h1>
+  <table style="margin-left: 150px;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Authors</th>
+        <th>Year</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody id="order-items">
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5">
+          <button id="clear-basket">Clear Basket</button>
+          <button id="confirm-order">Confirm Order</button>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <script>
+    //set onlick that basket empties to value 0 (reset)
+    const clearBasketBtn = document.querySelector('#clear-basket');
+    clearBasketBtn.addEventListener('click', () => {
+      localStorage.removeItem('basket');
+      localStorage.setItem('itemCount', 0);
+      itemCount = 0;
+      itemCountSpan.innerText = itemCount;
+      const orderItems = document.querySelector('#order-items');
+      orderItems.innerHTML = '';
+    });
+
+    const confirmOrderBtn = document.querySelector('#confirm-order');
+    confirmOrderBtn.addEventListener('click', () => {
+      window.location.href = '/confirm';
+    });
+
+    // Retrieve all the items from the localStorage
+    const basket = JSON.parse(localStorage.getItem('basket'));
+
+    // put vallues on table with the important content
+    const orderItems = document.querySelector('#order-items');
+    basket.forEach(item => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${item.id}</td>
+        <td>${item.title}</td>
+        <td>${item.authors.join(', ')}</td>
+        <td>${item.year}</td>
+        <td>${item.quantity}</td>
+        <td>${item.price}</td>
+       
+      `;
+      orderItems.appendChild(row);
+    });
+  </script>
+
+<script src="basket.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    updateBasket();
+  });
+</script>
+
+    <script>
+      let itemCount = 0;
+      const itemCountSpan = document.querySelector('.item-count');
+      const shoppingBasketBtn = document.querySelector('#shopping-basket');
+    
+      shoppingBasketBtn.addEventListener('click', () => {
+        window.location.href = "/order";
+      });
+    
+      const orderForm = document.querySelector('form');
+      orderForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        window.location.href = '/order';
+      });
+    //connect to order page
+    document.addEventListener('DOMContentLoaded', () => {
+      const storedItemCount = localStorage.getItem('itemCount');
+      if (storedItemCount !== null) {
+        itemCount = parseInt(storedItemCount);
+        itemCountSpan.innerText = itemCount;
+      }
+    });
+    
+    function addItemToBasket(value, id, title, year, authors, price) {
+      itemCount += parseInt(value);
+      itemCountSpan.innerText = itemCount;
+    
+      const item = {
+        id: id,
+        title: title,
+        year: year,
+        authors: authors,
+        quantity: value,
+        price: price
+        
+      };
+      let basket = localStorage.getItem('basket');
+      if (basket === null) {
+        basket = [item];
+      } else {
+        basket = JSON.parse(basket);
+        let itemIndex = basket.findIndex(i => i.id === id);
+        if (itemIndex === -1) {
+          basket.push(item);
+        } else {
+          basket[itemIndex].quantity = value;
+        }
+      }
+      localStorage.setItem('basket', JSON.stringify(basket));
+    }
+    const orderSelects = document.querySelectorAll('.order-select');
+    orderSelects.forEach(select => {
+      select.addEventListener('change', () => {
+        const id = select.dataset.id;
+        const value = select.value;
+        const title = select.closest('tr').querySelector('td:nth-child(2)').textContent;
+        const year = select.closest('tr').querySelector('td:nth-child(3)').textContent;
+        const authors = select.closest('tr').querySelector('td:nth-child(4)').textContent.split(', ');
+        const price = select.closest('tr').querySelector('td:nth-child(5)').textContent;
+        const okBtn = document.querySelector(`#ok-${id}`);
+        okBtn.style.display = 'inline-block';
+        addItemToBasket(value, id, title, year, authors, price);
+      });
+    });
+    
+    </script>
+   
+    <div id="contact-form">
+      <h1 style= "font-size: 30px;"> Contact Us</h1>
+      <form>
+        <div class="form-group">
+          <label style="color:black; font-size: 18px;" for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label style="color:black; font-size: 18px;" for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label style="color:black; font-size: 18px;" for="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+       
+        <div class="form-group">
+          <label style="color:black; font-size: 18px;" or="message">Message:</label>
+          <textarea id="message" name="message" required style="height: 100px; width: 100%;"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <button type="submit">Send Message</button>
+          <button type="button" id="close-btn">Close</button>
+        </div>
+      </form>
+    </div>
+    
+    <script>
+      const contactBtn = document.getElementById("contact-btn");
+      const contactForm = document.getElementById("contact-form");
+      const closeBtn = document.getElementById("close-btn");
+      
+      contactBtn.addEventListener("click",() => {
+      contactForm.style.display = "block";
+      });
+      
+      closeBtn.addEventListener("click", () => {
+      contactForm.style.display = "none";
+      });
+      </script>
+
+    <footer class="footer" style="position: relative; bottom: 0; width: 100%; margin: auto 0;">
+      <div class="container">
+          <div class="row">
+              <div class="footer_col">
+  
+                  <h4 style ="font-size: 23px;">Company</h4>
+                  <ul>
+                      <li> <a href="/aboutus">About us</a></li>
+                      <li> <a href="/ourservices">Our Services</a></li>
+                      <li> <a href="/privacy">Privacy Policy</a></li>
+                  </ul>
+              </div>
+              <div class="footer_col">
+                  <h4 style ="font-size: 23px;">Get Help</h4>
+                  <ul>
+                      <li> <a href="/faq">FAQ</a></li>
+                      <li> <a href="/shipping">Shipping</a></li>
+                      <li> <a href="/returns">Returns</a></li>
+                    
+                  </ul>
+              </div>
+              <div class="footer_col">
+                  <h4 style ="font-size: 23px;">Online Shop</h4>
+                  <ul>
+                    <li> <a href="/shoparticles">Articles </a></li>
+                    <li> <a href="/shopbooks">Books</a></li>
+                    <li> <a href="/shopreports">Reports</a></li>
+                    
+                  </ul>
+              </div>
+  
+              <div class="footer_col">
+                  <h4 style ="font-size: 23px;">Follow Us</h4>
+                  <div class="social_links">
+                  <ul>
+                      <a href="https://www.facebook.com/UniversityofKent/?locale=en_GB"><i class="fa fa-facebook"></i></a>
+                      <a href="https://twitter.com/UniKent?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fa fa-twitter"></i></a>
+                      <a href="https://www.instagram.com/unikentlive/?hl=en"><i class="fa fa-instagram"></i></a>
+                      <a href="https://www.linkedin.com/school/university-of-kent/"><i class="fa fa-linkedin"></i></a>
+                  </ul>
+              </div>
+              </div>
+  
+          </div>
+      </div>
+  </footer>
+      </body>
+  </html>
+  

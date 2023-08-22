@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>RESEARCH NOW</title>
+<script src="js/script.js"></script>
+<link rel="stylesheet" href="css/webdesign.css"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<nav class="navibar">
+<div class="navibar_container">
+
+<a href="/" id="navi_logo"> <i class="fa fa-book"></i>RESEARCH NOW</a>
+
+<div class="navibar_toggle" id="menu_bar">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+</div>
+<ul class="navibar_menu">
+<li class="navi_part">
+<a href="/" class="navi_link" title="Go to the Home page">Home</a>
+</li>
+<li class="navi_part">
+<a href="/search" class="navi_link" title="Explore new content including articles reports and books, ready for you to discover">Explore</a>
+</li>
+<li class="navi_part">
+<a href="/shop" class="navi_link" title="Visit the Shop to purchase your found content items">Shop</a>
+</li>
+<li class="navi_part">
+<button id="contact-btn" class="contact-btn" title="Contact us for further information or any questions you may have">Contact</button>
+</li>
+<li class="navi_button">
+<button class="button" onclick="openForm()" title="Sign up for an account">Sign up</button>
+</li>
+<li class="navi_part">
+<button id= "shopping-basket" style="font-size:24px; width: 150%;" title="My Basket"><i class="fa fa-shopping-basket"></i><span class="item-count">0</span></button>
+</li>
+<li class="navi_part">
+  <a href="/myprofile">
+  <button id="myp" class="myp" title="My Profile">My profile</button></a>
+</li>
+</ul>
+</div>
+</nav>
+</head>
+
+<body style="background-color: #B9D9EB; width:100%; height:10px !important;">
+  <style>
+  html {
+    position: relative;
+    min-width: 1024px;
+    min-height: 768px;
+    height: 100%;
+}
+</style>    
+<div class="main" id="myForm">  	
+		<input type="checkbox" id="chk" >
+
+			<div class="signup">
+				<form action="/action_page.php">
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" name="txt" placeholder="User name" required="">
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button class="button1">Sign up</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form action="/action_page.php" >
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button>Login</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                </div>
+				</form>
+			
+	</div>
+
+
+  <% if (typeof message !== 'undefined' && message !== '') { %>
+    <p style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;"><%= message %></p>
+  <% } %>
+  
+  <div class="search">
+    <form action="/search" class="search_bar" method="get">
+        <input type="text" placeholder="Search Here For Content" name="query" id="searchInput">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+ <!-- adding versions of jQuery to help with the autosuggestions-->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="path/to/jquery.min.js"></script>
+
+<script>
+  $(function() {
+    // search suggestions from the keywords array 
+    var availableTags = [
+    "CRIMINAL",
+  "LAW ",
+  "Amy",
+  "DeLine",
+  "Adair",
+  "Crosley",
+  "C.",
+  "R.",
+  "Sridhar",
+  "Urban",
+  "Crime",
+  "Hee-Jong",
+  "Joo",
+  "CONTROL",
+"Cultural",
+  "Studies",
+  "Janet",
+  "Wolff",
+  "Culture",
+"Youth",
+  "Jeff",
+  "Ferrell",
+  "Cultural Space",
+"FEMINISM",
+  "Loraine",
+  "Gelsthorpe",
+  "Allison",
+  "Morris",
+  "BRITAIN",
+"INEQUALITY",
+  "Morgan",
+  "Kelly",
+"VARIETIES",
+  "ENLIGHTENMENT",
+  "Philip",
+  "Jenkins",
+  "Social Policy",
+  "Family",
+  "Concepts",
+  "Concerns",
+  "Shirley",
+  "L.",
+  "Zimmerman",
+  "Analytic Tools",
+"STATES",
+  "POLICIES",
+  "Theda",
+  "Skocpol",
+  "Edwin",
+  "Amenta",
+  "Geoff Whitty",
+  "Education",
+  "Research",
+  "Social",
+  "Bob",
+  "Lingard",
+  "Justice",
+"Ideology",
+  "Shaped",
+  "Psychology",
+  "Time",
+  "Wars",
+  "Gordana",
+  "Jovanović",
+  "Politics",
+  "ALLEVIATION",
+  "ethnic",
+  "groups",
+  "food poverty line",
+  "Living Standards Measurement Surveys",
+  "poverty line",
+  "poverty",
+  "reduction",
+  "social development",
+  "Brian",
+  "Van",
+  "Arkadie",
+  "Raymond",
+  "Mallon",
+  "welfare",
+"Prevention",
+  "Criminology",
+  "Christine",
+  "Gervais",
+  "Governmentality",
+"Community",
+  "Policing",
+  "19th",
+  "Century",
+  "Britain",
+  "Imperial Japan",
+  "Rethinking",
+  "International",
+  "Deniz",
+  "Kocak",
+  "Reform",
+"Inequality",
+  "Emma",
+  "Aguila",
+  "Alisher",
+  "R.",
+  "Akhmedjonov",
+  "Ricardo",
+  "Basurto-Davila",
+  "Krishna",
+  "B.",
+  "Kumar",
+  "Sarah",
+  "Kups",
+  "Howard",
+  "J.",
+  "Shatz",
+  "Mexico",
+  "Gjalt",
+  "de",
+  "Graaf",
+  "Patrick",
+  "von",
+  "Maravić",
+  "Pieter",
+  "Wagenaar",
+  "Corruption",
+  "gender",
+  "equality",
+  "Meredith",
+  "Edwards",
+  "Miranda",
+  "Stewart",
+  "Legitimacy",
+  "Robert",
+  "E.",
+  "Worden",
+  "Sarah",
+  "J.",
+  "McLean",
+"History",
+  "Psychology",
+  "Schools",
+  "Adelaide",
+  "Neil",
+  "Kirby",
+  "Universities",
+"Human",
+  "psychology",
+  "intelligent",
+  "machines",
+  "Aaron",
+  "Celaya",
+  "Nick",
+  "Yeung",
+  "Arbara",
+  "Kotschwar",
+  "Policy",
+"Police",
+  "Corruption",
+  "Past",
+  "Scandals",
+  "David",
+  "Bayley",
+  "Robert",
+  "Perito",
+  "Challenges",
+  "PROBATION",
+  "TIME",
+  "Emily",
+  "Mooney",
+  "Nila",
+  "Bala",
+  "COVID-19",
+  "state-sponsored",
+  "Johannes",
+  "Wiggen",
+  "cyber",
+  "Responses",
+  "Merike",
+  "Blofield",
+  "Bert",
+  "Hoffmann",
+  "Crisis",
+"Theories",
+  "Robert Muggah",
+  "Katherine",
+  "Aguirre",
+  "Tobón",
+  "violence",
+"International",
+  "political",
+  "sociology",
+  "ontology",
+  "power",
+  "Stefano",
+  "Guzzini",
+  "politics",
+"Criminological",
+  "Perspectives",
+  "Female",
+  "Suicide",
+  "Maria",
+  "Alvanou",
+  "Terrorism",
+"Urbanisation",
+  "ruralurban",
+  "migration",
+  "urban",
+  "Cecilia",
+  "Tacoli",
+  "Gordon",
+  "McGranahan",
+  "David",
+  "Satterthwaite"
+];
+
+    // autocomplete the search suggestions 
+    $("#searchInput").autocomplete({
+      source: availableTags
+    });
+  });
+</script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <% if (typeof results !== 'undefined' && results.length > 0) { %>
+    <h1 style="margin-top: -50px; justify-content: center; position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);">Search Results:</h1>
+    
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Authors</th>
+          <th>Year</th>
+          <th>Abstract</th>
+          <th>Download</th>
+          <th>Type</th>
+          <th>Citation</th>
+          <th>Save</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% results.forEach((article) => { %>
+          <tr>
+            <td><input type="checkbox" class="document-checkbox" name="selected[]" value="<%= article._id %>" style="transform: scale(2.5);"></td>
+            <td><%= article.Title %></td>
+            <td><%= article.Authors.join(", ") %></td>
+            <td><%= article.Year %></td>
+            <td>
+              <div class="abstract" id="abstract-<%= article._id %>">
+                <% if (article.Abstract.length <= 200) { %>
+                <%= article.Abstract %>
+                <% } else { %>
+                <%= article.Abstract.slice(0, 200) %>...
+                <button id="showMore-<%= article._id %>" onclick="showMore('<%= article._id %>', '<%= article.Abstract %>')">Show more</button>
+                <% } %>
+              </div>
+            </td>
+            <td><a href="<%= article.File %>">Download</a></td>
+            <td><%= article.Type %></td>
+            <td>
+              <select id="style<%= article._id %>">
+                <option value="none">Select citation style</option>
+                <option value="chicago">Chicago</option>
+                <option value="harvard">Harvard</option>
+                <option value="apa">APA</option>
+              </select>
+            </td>
+            <td> 
+              <button class="save" onclick="saveContent(this)" data-title="<%= article.Title %>" data-authors="<%= article.Authors.join(', ') %>" data-year="<%= article.Year %>">Save</button>
+              
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  <% } else if (typeof message !== 'undefined' && message === "No results found") { %>
+    <p>No results found</p>
+  <% } %>
+  <br>
+  <br>
+
+<script>
+  //link button to myprofile page
+  //const savebtn = document.querySelector('#save');
+
+  //savebtn.addEventListener('click', () => {
+  //  window.location.href = "/myprofile";
+  //});
+</script> 
+
+<script>
+  //retrieves data from the right rows to store and save
+const savebtn = document.getElementById('savebtn');
+saveBtn.addEventListener('click', function(a) {
+  a.preventDefault();
+  const title = article.querySelector('td:nth-child(2)').textContent;
+  const authors = article.querySelector('td:nth-child(3)').textContent;
+  const year = article.querySelector('td:nth-child(4)').textContent;
+//put in local storage
+  const savedContent = JSON.parse(localStorage.getItem('savedContent')) || [];
+  savedContent.push({title, authors, year});
+  localStorage.setItem('savedContent', JSON.stringify(savedContent));
+  window.location.href = "/myprofile";
+});
+</script>
+  
+  <script>
+    function saveContent(button) {
+      const title = button.dataset.title;
+      const authors = button.dataset.authors;
+      const year = button.dataset.year;
+    
+      const savedContent = JSON.parse(localStorage.getItem('savedContent')) || [];
+      savedContent.push({title, authors, year});
+      localStorage.setItem('savedContent', JSON.stringify (savedContent));
+    }
+    
+    </script>
+ 
+  <script>
+    // add an event listener to the elements for the citations 
+    document.querySelectorAll('select[id^="style"]').forEach(select => {
+      select.addEventListener('change', (event) => {
+        //change not click
+        const citetsyle = event.target.value;
+        if (citetsyle !== 'none') {
+          const articleId = event.target.parentNode.parentNode.dataset.articleId;
+          const articleTitle = event.target.parentNode.parentNode.querySelector('td:nth-child(2)').textContent;
+          const articleAuthors = event.target.parentNode.parentNode.querySelector('td:nth-child(3)').textContent;
+          const articleYear = event.target.parentNode.parentNode.querySelector('td:nth-child(4)').textContent;
+
+          let citation;
+if (citetsyle === 'chicago') {
+  const authorsArray = articleAuthors.split(' ');
+  authorsArray.splice(1, 0, ',');
+  
+  const formattedAuthors = authorsArray.join(' ');
+  citation = `${formattedAuthors}. "${articleTitle}" (${articleYear}),pp.XXX-XXX.`;
+//print the citation split and join authors names and insert a comma between 
+} else if (citetsyle === 'harvard') {
+  const authorsArray = articleAuthors.split(' ');
+  const formattedAuthors = `${authorsArray[0]}  ${authorsArray.slice(1).map(name => name.charAt(0)).join('. ')}.`;
+  citation = `${formattedAuthors} (${articleYear}) "${articleTitle}," pp.XXX-XXX.`;
+//print the citation slpit the names and add a fullstop
+} else if (citetsyle === 'apa') {
+  const authorsArray = articleAuthors.split(' ');
+  const formattedAuthors = `${authorsArray[0]}, ${authorsArray.slice(1).map(name => name.charAt(0)).join('. ')}.`;
+  citation = `${formattedAuthors} (${articleYear}). ${articleTitle}. ${articleTitle}, pp.XXX-XXX.`;
+}
+//print the citation
+alert(`You have selected ${citetsyle} citation style for this content.\n\nCitation:\n${citation}\n\nFor more information please visit our website at localhost:5056.`);
+        }
+        
+      });
+    });
+  </script>
+ 
+  <script>
+    function showMore(articleId, abstract) {
+      const abstractElement = document.getElementById(`abstract-${articleId}`);
+      const showMoreButton = abstractElement.querySelector(`button`);
+      
+      //abstractElement.classList.toggle("expanded");
+    
+      if (abstractElement.classList.contains("expanded")) {
+        // Showing only the beginning of the abstract
+        showMoreButton.innerHTML = "Show More";
+        abstractElement.innerHTML = `${abstract.slice(0, 200)}...`;
+        abstractElement.classList.remove("expanded");
+      } else {
+        // Showing all the abstract
+        showMoreButton.innerHTML = "Show Less";
+        abstractElement.innerHTML = abstract;
+        abstractElement.classList.add("expanded");
+      }
+      abstractElement.appendChild(showMoreButton);
+    }
+    </script>
+  
+    <script>
+      //older, normal pop-up function that displays the information in the rows of the table
+      const checkboxes = document.querySelectorAll('.document-checkbox');
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', event => {
+          if (event.target.checked) {
+            const row = event.target.closest('tr');
+            
+            const year = row.querySelector('td:nth-child(3)').textContent;
+            const title = row.querySelector('td:nth-child(2)').textContent;
+            const authors = row.querySelector('td:nth-child(4)').textContent;
+    
+            window.alert(`Selected document:\nYear: ${year}\nTitle: ${title}\nAuthors: ${authors}`);
+          }
+        });
+      });
+    </script>
+
+
+    <script>
+      //newer pop-up window that allows the user to change the feature of the pop-up to suit their needs, important for users that have disabilities
+      //const checkboxes = document.querySelectorAll('.document-checkbox');
+      //checkboxes.forEach(checkbox => {
+        //checkbox.addEventListener('change', event => {
+         //if (event.target.checked) {
+           
+          //const row = event.target.closest('tr');
+       
+           //const year = row.querySelector('td:nth-child(3)').textContent;
+            //const title = row.querySelector('td:nth-child(2)').textContent;
+           //const authors = row.querySelector('td:nth-child(4)').textContent;
+    
+            //const size = prompt('Enter the size of the pop-up window (e.g. "400x400"):');
+            //const position = prompt('Enter the position of the pop-up window (e.g. "center"):');
+            //const color = prompt('Enter the color of the pop-up window (e.g. "white"):');
+            //const popUpWindow = window.open('', '', `width=${size.split('x')[0]}, height=${size.split('x')[1]}, left=${position}, top=${position}, resizable=1`);
+            //popUpWindow.document.body.style.backgroundColor = color;
+           //popUpWindow.alert(`Selected document:\nYear: ${year}\nTitle: ${title}\nAuthors: ${authors}`);
+          //}
+       //});
+      //});
+    </script>
+ 
+     <div id="contact-form">
+      <h1 style= "font-size: 30px;"> Contact Us</h1>
+      <form>
+        <div class="form-group">
+          <label style="color:black; font-size: 18px;" for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label style="color:black; font-size: 18px;" for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label style="color:black; font-size: 18px;" for="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+       
+        <div class="form-group">
+          <label style="color:black; font-size: 18px;" or="message">Message:</label>
+          <textarea id="message" name="message" required style="height: 100px; width: 100%;"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <button type="submit">Send Message</button>
+          <button type="button" id="close-btn">Close</button>
+        </div>
+      </form>
+     
+    </div>
+    
+     
+<script>
+const contactBtn = document.getElementById("contact-btn");
+const contactForm = document.getElementById("contact-form");
+const closeBtn = document.getElementById("close-btn");
+
+contactBtn.addEventListener("click", () => {
+  contactForm.style.display = "block";
+});
+
+closeBtn.addEventListener("click", () => {
+  contactForm.style.display = "none";
+});
+</script>
+          
+
+<div class="filter-bar">
+  <form method="get" action="/search">
+    <label for="sort-by" style="color:black">Sort By:</label>
+    <select id="sort-by" name="sort">
+      <option value="">Sort By:</option>
+      <option value="year-asc">Year (Oldest First)</option>
+      <option value="year-desc">Year (Newest First)</option>
+    </select>
+
+    <label for="content_type" style="color:black">Content Type:</label>
+    <select id="content_type" name="content_type">
+      <option value="all">All</option>
+      <option value="article">Article</option>
+      <option value="report">Report</option>
+      <option value="book">Book</option>
+    </select>
+
+    <form action="" class="search_bar">
+     
+      <div class="autocomplete-results"></div>
+      <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+      <button type="button" id="clear-button">Clear Filters</button>
+      
+    </form>
+  </form>
+</div>
+
+
+
+<script>
+  let itemCount = 0;
+  const itemCountSpan = document.querySelector('.item-count');
+  
+  const shoppingBasketBtn = document.querySelector('#shopping-basket');
+
+  shoppingBasketBtn.addEventListener('click', () => {
+    window.location.href = "/order";
+  });
+
+  const orderSelects = document.querySelectorAll('.order-select');
+  orderSelects.forEach(select => {
+    select.addEventListener('change', () => {
+      const id = select.dataset.id;
+      const value = select.value;
+      const okBtn = document.querySelector(`#ok-${id}`);
+      okBtn.style.display = 'inline-block';
+      addItemToBasket(value);
+    });
+  });
+
+  function addItemToBasket(value) {
+    itemCount += parseInt(value);
+    itemCountSpan.innerText = itemCount;
+  }
+
+  const orderForm = document.querySelector('form');
+  orderForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    window.location.href = '/order';
+  });
+</script>
+
+<footer class="footer" style="position: relative; bottom: 0; width: 100%; margin: auto 0;">
+  <div class="container">
+      <div class="row">
+          <div class="footer_col">
+
+
+
+              <h4 style ="font-size: 23px;">Company</h4>
+              <ul>
+                  <li> <a href="/aboutus">About us</a></li>
+                  <li> <a href="/ourservices">Our Services</a></li>
+                  <li> <a href="/privacy">Privacy Policy</a></li>
+              </ul>
+          </div>
+          <div class="footer_col">
+              <h4 style ="font-size: 23px;">Get Help</h4>
+              <ul>
+                  <li> <a href="/faq">FAQ</a></li>
+                  <li> <a href="/shipping">Shipping</a></li>
+                  <li> <a href="/returns">Returns</a></li>
+                
+              </ul>
+          </div>
+          <div class="footer_col">
+              <h4 style ="font-size: 23px;">Online Shop</h4>
+              <ul>
+                <li> <a href="/shoparticles">Articles </a></li>
+                <li> <a href="/shopbooks">Books</a></li>
+                <li> <a href="/shopreports">Reports</a></li>
+                
+              </ul>
+          </div>
+
+          <div class="footer_col">
+              <h4 style ="font-size: 23px;">Follow Us</h4>
+              <div class="social_links">
+              <ul>
+                  <a href="https://www.facebook.com/UniversityofKent/?locale=en_GB"><i class="fa fa-facebook"></i></a>
+                  <a href="https://twitter.com/UniKent?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fa fa-twitter"></i></a>
+                  <a href="https://www.instagram.com/unikentlive/?hl=en"><i class="fa fa-instagram"></i></a>
+                  <a href="https://www.linkedin.com/school/university-of-kent/"><i class="fa fa-linkedin"></i></a>
+              </ul>
+          </div>
+          </div>
+
+
+  
+      </div>
+  </div>
+</footer>
+  </body>
+</html>

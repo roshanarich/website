@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+      <title>RESEARCH NOW</title>
+      <script src="js/script.js"></script>
+      <link rel="stylesheet" href="css/webdesign.css"> 
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    </head>
+ 
+    <body style="background-color: #B9D9EB;">
+        <nav class="navibar">
+        <div class="navibar_container">
+          <a href="/" id="navi_logo"> <i class="fa fa-book"></i>RESEARCH NOW</a>
+          <div class="navibar_toggle" id="menu_bar">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="navibar_menu">
+            <li class="navi_part">
+              <a href="/" class="navi_link" title="Go to the Home page">Home</a>
+            </li>
+            <li class="navi_part">
+              <a href="/search" class="navi_link" title="Explore new content including articles reports and books, ready for you to discover">Explore</a>
+            </li>
+            <li class="navi_part">
+              <a href="/shop" class="navi_link" title="Visit the Shop to purchase your found content items">Shop</a>
+            </li>
+            <li class="navi_part">
+              <button id="contact-btn" class="contact-btn" title="Contact us for further information or any questions you may have">Contact</button>
+            </li>
+            <li class="navi_button">
+              <button class="button" onclick="openForm()" title="Sign up for an account">Sign up</button>
+            </li>
+            <li class="navi_part">
+              <button id= "shopping-basket" style="font-size:24px; width: 150%;" title="My Basket"><i class="fa fa-shopping-basket"></i><span class="item-count">0</span></button>
+          </li>
+          <li class="navi_part">
+            <a href="/myprofile">
+            <button id="myp" class="myp" title="My Profile">My profile</button></a>
+          </li>
+          </ul>
+        </div>
+      </nav>
+      
+       
+<div class="main" id="myForm">  	
+		<input type="checkbox" id="chk" >
+
+			<div class="signup">
+				<form action="/action_page.php">
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" name="txt" placeholder="User name" required="">
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button class="button1">Sign up</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form action="/action_page.php" >
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button>Login</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                </div>
+				</form>
+			
+	</div>
+
+ 
+     <div id="contact-form">
+      <h1 style= "font-size: 30px;"> Contact Us</h1>
+      <form>
+        <div class="form-group">
+          <label style="color:black; font-size: 18px;" for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label style="color:black; font-size: 18px;" for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label style="color:black; font-size: 18px;" for="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+       
+        <div class="form-group">
+          <label style="color:black; font-size: 18px;" or="message">Message:</label>
+          <textarea id="message" name="message" required style="height: 100px; width: 100%;"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <button type="submit">Send Message</button>
+          <button type="button" id="close-btn">Close</button>
+        </div>
+      </form>
+    </div>
+    
+    <script>
+      const contactBtn = document.getElementById("contact-btn");
+      const contactForm = document.getElementById("contact-form");
+      const closeBtn = document.getElementById("close-btn");
+      
+      contactBtn.addEventListener("click", () => {
+      contactForm.style.display = "block";
+      });
+      
+      closeBtn.addEventListener("click", () => {
+      contactForm.style.display = "none";
+      });
+    </script>
+
+    <div class="about-section" style="margin-top: 80px;">
+      <h1>About Us</h1>
+      <p>Research Now is an exploarative wbesite for research content</p>
+    </div>
+    
+    <h2 style="text-align:center">Our Team</h2>
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <img src="images/owner.jpg" alt="Roshana" style="width:100%">
+          <div class="container">
+            <h2>Roshana Richards</h2>
+            <p class="title">CEO & Founder</p>
+            <p>I am a student that has created a reaserch website for other students alike to find <br> articles, reports and books to help with their assignments.</p>
+            <p>rr386@kent.ac.uk</p>
+            <p><button id="contact-btn" class="contact-btn" title="Contact us for further information or any questions you may have">Contact</button></p>
+          </div>
+        </div>
+      </div>
+    </div>
+     <br>
+     <br>
+     <br>
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+      }
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
+      .column {
+        width: 33.3%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .card {
+        box-shadow: 0 4px 8px 0 black;
+        margin: 8px;
+      }
+      .about-section {
+        padding: 50px;
+        text-align: center;
+        background-color: white;
+        color: black;
+        margin-top: -300px;
+      }
+      .about-section p {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+      .about-section h1 {
+        font-size: 40px;
+        margin-bottom: 20px;
+      }
+      .container {
+        padding: 0 16px;
+      }
+      .container::after, .row::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+      .title {
+        color: grey;
+      }
+      @media screen and (max-width: 650px) {
+        .column {
+          width: 100%;
+          display: block;
+        }
+        .row {
+          display: flex;
+          justify-content: center;
+        }
+      }
+      html {
+        box-sizing: border-box;
+      }
+    </style>
+    
+    
+
+
+    <script>
+      //access to the basket and see any updated items for all pages
+      let itemCount = 0;
+      const itemCountSpan = document.querySelector('.item-count');
+      
+      const shoppingBasketBtn= document.querySelector('#shopping-basket');
+    
+      shoppingBasketBtn.addEventListener('click', () => {
+        window.location.href = "/order";
+      });
+    //link to the order page 
+      const orderSelects = document.querySelectorAll('.order-select');
+      orderSelects.forEach(select => {
+        select.addEventListener('change', () => {
+          const id = select.dataset.id;
+          const value = select.value;
+           okBtn.style.display = 'inline-block';
+          addItemToBasket(value);
+        });
+      });
+    
+      function addItemToBasket(value) {
+        itemCount += parseInt(value);
+        itemCountSpan.innerText = itemCount;
+      }
+    
+      const orderForm = document.querySelector('form');
+      orderForm.addEventListener('submit',(event) =>{
+        event.preventDefault();
+        window.location.href = '/order';
+      });
+      //basket value should update on each page
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+<footer class="footer" style="position: relative; bottom: 0; width: 100%; margin: auto 0;">
+  <div class="container">
+      <div class="row">
+          <div class="footer_col">
+
+
+
+              <h4 style ="font-size: 23px;">Company</h4>
+              <ul>
+                  <li> <a href="/aboutus">About us</a></li>
+                  <li> <a href="/ourservices">Our Services</a></li>
+                  <li> <a href="/privacy">Privacy Policy</a></li>
+              </ul>
+          </div>
+          <div class="footer_col">
+              <h4 style ="font-size: 23px;">Get Help</h4>
+              <ul>
+                  <li> <a href="/faq">FAQ</a></li>
+                  <li> <a href="/shipping">Shipping</a></li>
+                  <li> <a href="/returns">Returns</a></li>
+                
+              </ul>
+          </div>
+          <div class="footer_col">
+              <h4 style ="font-size: 23px;">Online Shop</h4>
+              <ul>
+                <li> <a href="/shoparticles">Articles </a></li>
+                <li> <a href="/shopbooks">Books</a></li>
+                <li> <a href="/shopreports">Reports</a></li>
+                
+              </ul>
+          </div>
+
+          <div class="footer_col">
+              <h4 style ="font-size: 23px;">Follow Us</h4>
+              <div class="social_links">
+              <ul>
+                  <a href="https://www.facebook.com/UniversityofKent/?locale=en_GB"><i class="fa fa-facebook"></i></a>
+                  <a href="https://twitter.com/UniKent?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fa fa-twitter"></i></a>
+                  <a href="https://www.instagram.com/unikentlive/?hl=en"><i class="fa fa-instagram"></i></a>
+                  <a href="https://www.linkedin.com/school/university-of-kent/"><i class="fa fa-linkedin"></i></a>
+              </ul>
+          </div>
+          </div>
+
+
+  
+      </div>
+  </div>
+</footer>
+  </body>
+</html>
